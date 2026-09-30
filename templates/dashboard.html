@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ASTRO SENSE</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+          <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+   <header class="header">
+
+    <div class="brand-area">
+
+        <div class="brand-mark">
+            <span class="brand-orbit">◉</span>
+            <span class="brand-line"></span>
+        </div>
+
+        <div>
+            <div class="logo">
+                ASTRO <span>SENSE</span>
+            </div>
+
+            <div class="subtitle">
+                HUMAN SPACEFLIGHT HEALTH INTELLIGENCE
+            </div>
+        </div>
+
+    </div>
+
+    <div class="mission-info">
+
+        <div class="mission-label">
+            MISSION
+        </div>
+
+        <div class="mission-name">
+            AURORA-X
+        </div>
+
+        <div class="mission-status">
+            <span class="status-dot"></span>
+            SYSTEM ONLINE
+        </div>
+
+    </div>
+
+</header>
+
+
+    <main class="container">
+<!-- ==========================================
+     MISSION CONTROL ALERT BANNER
+========================================== -->
+
+<div id="missionAlertBanner" class="mission-alert-banner">
+
+    <div class="mission-alert-icon" id="missionAlertIcon">
+        🚨
+    </div>
+
+    <div class="mission-alert-content">
+
+        <div class="mission-alert-title" id="missionAlertTitle">
+            MISSION CONTROL ALERT
+        </div>
+
+        <div class="mission-alert-message" id="missionAlertMessage">
+            No active emergency.
+        </div>
+
+        <div class="mission-alert-time" id="missionAlertTime">
+        </div>
+
+    </div>
+
+    <button
+        id="missionAlertClose"
+        class="mission-alert-close"
+        onclick="closeMissionAlert()">
+        ✕
+    </button>
+
+</div>
+       <section class="summary">
+
+    <div class="card telemetry-card">
+
+        <div class="card-top">
+            <div class="card-title">
+                CREW
+            </div>
+
+            <div class="card-icon">
+                👨‍🚀
+            </div>
+        </div>
+
+        <div class="card-value">
+            04
+        </div>
+
+        <div class="card-meta">
+            ACTIVE PERSONNEL
+        </div>
+
+    </div>
+
+
+    <div class="card telemetry-card">
+
+        <div class="card-top">
+            <div class="card-title">
+                ACTIVE ALERTS
+            </div>
+
+            <div class="card-icon alert-icon">
+                ⚠
+            </div>
+        </div>
+
+        <div class="card-value" id="activeAlerts">
+            0
+        </div>
+
+        <div class="card-meta">
+            UNACKNOWLEDGED EVENTS
+        </div>
+
+    </div>
+
+
+    <div class="card telemetry-card">
+
+        <div class="card-top">
+            <div class="card-title">
+                SYSTEM STATUS
+            </div>
+
+            <div class="card-icon">
+                ◉
+            </div>
+        </div>
+
+        <div class="card-value system-online">
+            ONLINE
+        </div>
+
+        <div class="card-meta">
+            ALL SYSTEMS NOMINAL
+        </div>
+
+    </div>
+
+</section>
+
+<div class="telemetry-strip">
+
+    <div>
+        <span class="telemetry-label">MISSION</span>
+        <strong>AURORA-X</strong>
+    </div>
+
+    <div>
+        <span class="telemetry-label">CREW STATUS</span>
+        <strong>NOMINAL</strong>
+    </div>
+
+    <div>
+        <span class="telemetry-label">UPLINK</span>
+        <strong class="uplink-status">● CONNECTED</strong>
+    </div>
+
+    <div>
+        <span class="telemetry-label">DATA STREAM</span>
+        <strong>LIVE</strong>
+    </div>
+
+</div>
+
+
+        <section class="astronaut">
+
+            <div class="astronaut-header">
+
+                <div>
+                    <div class="astronaut-name">
+    MAYA
+</div>
+
+<div class="crew-id">
+    CREW MEMBER / AUR-001
+</div>
+
+                    <div class="subtitle">
+                        Flight Engineer • AUR-001
+                    </div>
+                </div>
+
+                <div class="status">
+    <span class="status-light"></span>
+    STABLE
+</div>
+
+            </div>
+
+<div class="section-label">
+    LIVE BIOMETRIC TELEMETRY
+</div>
+            <div class="vitals">
+
+                <div class="vital">
+                    <div class="vital-icon">❤️</div>
+
+                    <div class="vital-value" id="heartRate">
+    --
+</div>
+
+                    <div class="vital-label">
+                        Heart Rate (BPM)
+                    </div>
+                </div>
+
+
+                <div class="vital">
+                    <div class="vital-icon">🫁</div>
+
+                    <div class="vital-value" id="spo2">
+    --
+</div>
+
+                    <div class="vital-label">
+                        SpO₂
+                    </div>
+                </div>
+
+
+                <div class="vital">
+                    <div class="vital-icon">🌡️</div>
+
+                    <div class="vital-value" id="temperature">
+    --
+</div>
+
+                    <div class="vital-label">
+                        Temperature
+                    </div>
+                </div>
+
+
+                <div class="vital">
+                    <div class="vital-icon">💓</div>
+
+                    <div class="vital-value" id="bloodPressure">
+    --
+</div>
+
+                    <div class="vital-label">
+                        Blood Pressure
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+       
+<section class="simulator">
+
+    <div class="card">
+
+        <div class="card-title">
+            HEALTH SIMULATION
+        </div>
+
+        <div style="margin-top: 15px;">
+
+            <button
+                class="sim-button normal-button"
+                onclick="setSimulation('NORMAL')">
+                🟢 NORMAL
+            </button>
+
+            <button
+                class="sim-button warning-button"
+                onclick="setSimulation('WARNING')">
+                🟡 WARNING
+            </button>
+
+            <button
+                class="sim-button critical-button"
+                onclick="setSimulation('CRITICAL')">
+                🔴 CRITICAL
+            </button>
+            <button
+    class="sim-button notification-button"
+    onclick="enableNotifications()">
+    🔔 ENABLE NOTIFICATIONS
+</button>
+
+        </div>
+
+        <div
+            id="simulationStatus"
+            style="margin-top: 15px; color:#8fa8c2;">
+            Simulation: NORMAL
+        </div>
+
+    </div>
+
+</section>
+<section class="charts-section">
+
+    <div class="chart-card">
+
+        <div class="chart-header">
+            ❤️ Heart Rate
+            <span>BPM</span>
+        </div>
+
+        <canvas id="heartRateChart"></canvas>
+
+    </div>
+
+
+    <div class="chart-card">
+
+        <div class="chart-header">
+            🫁 SpO₂
+            <span>%</span>
+        </div>
+
+        <canvas id="spo2Chart"></canvas>
+
+    </div>
+
+
+    <div class="chart-card">
+
+        <div class="chart-header">
+            🌡️ Temperature
+            <span>°C</span>
+        </div>
+
+        <canvas id="temperatureChart"></canvas>
+
+    </div>
+
+</section>
+        <section>
+
+            <div class="alert">
+
+                🚨 Alert Center
+
+                <br>
+                <br>
+
+                No critical alerts currently detected.
+
+            </div>
+
+        </section>
+<section class="active-alerts-section">
+
+    <div class="active-alerts-card">
+
+        <div class="active-alerts-header">
+
+            <div>
+                <div class="active-alerts-title">
+                    🚨 ACTIVE MISSION ALERTS
+                </div>
+
+                <div class="active-alerts-subtitle">
+                    Unacknowledged astronaut health events
+                </div>
+            </div>
+
+            <div class="active-alert-count" id="activeAlertCount">
+                0
+            </div>
+
+        </div>
+
+        <div id="activeAlertsList">
+
+            <div class="no-active-alerts">
+                🟢 No active alerts
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+        <section class="history-section">
+
+    <div class="history-card">
+
+        <div class="history-header">
+            <div>
+                <div class="history-title">
+                    📋 MISSION ALERT HISTORY
+                </div>
+
+                <div class="history-subtitle">
+                    Recorded astronaut health events
+                </div>
+            </div>
+
+            <button
+                class="refresh-button"
+                onclick="loadAlertHistory()">
+                ↻ REFRESH
+            </button>
+        </div>
+
+
+        <div class="history-table-container">
+
+            <table class="history-table">
+
+                <thead>
+
+                    <tr>
+                        <th>TIME</th>
+                        <th>ASTRONAUT</th>
+                        <th>STATUS</th>
+                        <th>EVENT</th>
+                    </tr>
+
+                </thead>
+
+                <tbody id="alertHistory">
+
+                    <tr>
+                        <td colspan="4">
+                            Loading alert history...
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+
+        <div id="lastUpdate"
+     style="color:#8fa8c2; margin-top:20px;">
+    Waiting for health data...
+</div>
+
+    </main>
+<script src="{{ url_for('static', filename='js/monitoring.js') }}"></script>
+<audio
+    id="emergencyAlarm"
+    preload="auto">
+</audio>
+</body>
+
+</html>

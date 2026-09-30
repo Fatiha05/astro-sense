@@ -1,0 +1,1529 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #07111f;
+    color: white;
+    min-height: 100vh;
+}
+
+.header {
+    padding: 25px 40px;
+    border-bottom: 1px solid #1d3955;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.subtitle {
+    color: #8fa8c2;
+    margin-top: 5px;
+}
+
+.mission {
+    color: #4ddcff;
+}
+
+.container {
+    padding: 30px 40px;
+}
+
+.summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+
+    margin-bottom: 30px;
+}
+
+.card {
+    background: #0d1d30;
+    border: 1px solid #1d3955;
+    border-radius: 14px;
+    padding: 22px;
+}
+
+.card-title {
+    color: #8fa8c2;
+    font-size: 14px;
+}
+
+.card-value {
+    font-size: 30px;
+    margin-top: 10px;
+}
+
+.astronaut {
+    background: #0d1d30;
+    border: 1px solid #1d3955;
+    border-radius: 16px;
+
+    padding: 25px;
+    margin-bottom: 30px;
+}
+
+.astronaut-header {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 25px;
+}
+
+.astronaut-name {
+    font-size: 22px;
+}
+
+.status {
+    padding: 8px 15px;
+
+    border-radius: 20px;
+
+    background: #123b2b;
+    color: #4dff9b;
+}
+
+.vitals {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 15px;
+}
+
+.vital {
+    background: #091727;
+
+    padding: 20px;
+
+    border-radius: 12px;
+}
+
+.vital-icon {
+    font-size: 25px;
+}
+
+.vital-value {
+    font-size: 25px;
+
+    margin-top: 10px;
+}
+
+.vital-label {
+    color: #8fa8c2;
+
+    font-size: 13px;
+}
+
+.alert {
+    background: #35151a;
+
+    border: 1px solid #9d303d;
+
+    padding: 20px;
+
+    border-radius: 12px;
+
+    color: #ff7784;
+}
+
+
+@media (max-width: 800px) {
+
+    .summary {
+        grid-template-columns: 1fr;
+    }
+
+    .vitals {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .header {
+        padding: 20px;
+    }
+
+    .container {
+        padding: 20px;
+    }
+}
+
+.simulator {
+    margin-bottom: 30px;
+}
+
+.sim-button {
+    border: none;
+    border-radius: 8px;
+
+    padding: 12px 18px;
+
+    margin-right: 8px;
+    margin-bottom: 8px;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.sim-button:hover {
+    transform: translateY(-2px);
+}
+
+.normal-button {
+    background: #123b2b;
+    color: #4dff9b;
+}
+
+.warning-button {
+    background: #403714;
+    color: #ffd84d;
+}
+
+.critical-button {
+    background: #45151b;
+    color: #ff6675;
+}
+.notification-button {
+    background: #12344a;
+    color: #4ddcff;
+}
+.charts-section {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+
+    margin-bottom: 30px;
+}
+
+.chart-card {
+    background: #0d1d30;
+
+    border: 1px solid #1d3955;
+
+    border-radius: 16px;
+
+    padding: 20px;
+
+    min-height: 280px;
+}
+
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+
+    font-size: 17px;
+    font-weight: bold;
+
+    margin-bottom: 15px;
+}
+
+.chart-header span {
+    color: #8fa8c2;
+    font-size: 13px;
+}
+/* =========================================
+   ALERT HISTORY
+========================================= */
+
+.history-section {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.history-card {
+    background: #0d1d30;
+
+    border: 1px solid #1d3955;
+
+    border-radius: 16px;
+
+    padding: 22px;
+
+    overflow: hidden;
+}
+
+.history-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 20px;
+}
+
+.history-title {
+    font-size: 18px;
+
+    font-weight: bold;
+}
+
+.history-subtitle {
+    color: #8fa8c2;
+
+    font-size: 13px;
+
+    margin-top: 5px;
+}
+
+.refresh-button {
+    background: #12344a;
+
+    color: #4ddcff;
+
+    border: 1px solid #245574;
+
+    border-radius: 8px;
+
+    padding: 9px 14px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+}
+
+.refresh-button:hover {
+    transform: translateY(-1px);
+}
+
+.history-table-container {
+    overflow-x: auto;
+}
+
+.history-table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    min-width: 650px;
+}
+
+.history-table th {
+    text-align: left;
+
+    color: #8fa8c2;
+
+    font-size: 12px;
+
+    padding: 12px;
+
+    border-bottom: 1px solid #1d3955;
+}
+
+.history-table td {
+    padding: 14px 12px;
+
+    border-bottom: 1px solid #142b42;
+
+    font-size: 14px;
+}
+
+.history-table tbody tr:hover {
+    background: #102238;
+}
+
+
+/* Status styles */
+
+.status-normal {
+    color: #4dff9b;
+
+    font-weight: bold;
+}
+
+.status-warning {
+    color: #ffd84d;
+
+    font-weight: bold;
+}
+
+.status-critical {
+    color: #ff6675;
+
+    font-weight: bold;
+}
+
+/* ============================= */
+/* ACTIVE ALERTS */
+/* ============================= */
+
+.active-alerts-section {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.active-alerts-card {
+    background: #0d1d30;
+    border: 1px solid #1d3955;
+    border-radius: 16px;
+    padding: 22px;
+}
+
+.active-alerts-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.active-alerts-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.active-alerts-subtitle {
+    color: #8fa8c2;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+.active-alert-count {
+    min-width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #45151b;
+    color: #ff6675;
+
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.active-alert-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 16px;
+
+    margin-bottom: 10px;
+
+    background: #101f31;
+
+    border: 1px solid #263e56;
+
+    border-radius: 10px;
+}
+
+.active-alert-info {
+    flex: 1;
+}
+
+.active-alert-status {
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.active-alert-message {
+    color: #c4d1df;
+    font-size: 14px;
+}
+
+.active-alert-time {
+    color: #7189a1;
+    font-size: 12px;
+    margin-top: 6px;
+}
+
+.acknowledge-button {
+    background: #12344a;
+
+    color: #4ddcff;
+
+    border: 1px solid #245574;
+
+    border-radius: 8px;
+
+    padding: 9px 14px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    white-space: nowrap;
+}
+
+.acknowledge-button:hover {
+    transform: translateY(-1px);
+    background: #17415c;
+}
+
+.no-active-alerts {
+    padding: 20px;
+
+    text-align: center;
+
+    color: #4dff9b;
+
+    background: #0b2119;
+
+    border-radius: 10px;
+
+    border: 1px solid #194d35;
+}
+
+/* =========================================
+   MISSION CONTROL ALERT BANNER
+========================================= */
+
+.mission-alert-banner {
+    display: none;
+
+    align-items: center;
+
+    gap: 18px;
+
+    padding: 18px 22px;
+
+    margin-bottom: 25px;
+
+    border-radius: 14px;
+
+    background: #35151a;
+
+    border: 1px solid #9d303d;
+
+    box-shadow: 0 0 20px rgba(255, 70, 90, 0.15);
+
+    animation: missionAlertSlide 0.4s ease;
+}
+
+.mission-alert-banner.warning {
+    background: #403714;
+
+    border-color: #8a7620;
+
+    box-shadow: 0 0 20px rgba(255, 216, 77, 0.12);
+}
+
+.mission-alert-banner.critical {
+    background: #35151a;
+
+    border-color: #9d303d;
+
+    box-shadow: 0 0 25px rgba(255, 70, 90, 0.2);
+}
+
+.mission-alert-icon {
+    font-size: 30px;
+
+    flex-shrink: 0;
+}
+
+.mission-alert-content {
+    flex: 1;
+}
+
+.mission-alert-title {
+    font-size: 16px;
+
+    font-weight: bold;
+
+    letter-spacing: 0.5px;
+
+    color: #ff6675;
+}
+
+.mission-alert-banner.warning
+.mission-alert-title {
+    color: #ffd84d;
+}
+
+.mission-alert-message {
+    margin-top: 5px;
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+}
+
+.mission-alert-time {
+    margin-top: 5px;
+
+    color: #8fa8c2;
+
+    font-size: 12px;
+}
+
+.mission-alert-close {
+    background: transparent;
+
+    border: 1px solid #526b83;
+
+    color: #8fa8c2;
+
+    border-radius: 7px;
+
+    width: 34px;
+
+    height: 34px;
+
+    cursor: pointer;
+
+    font-size: 16px;
+
+    flex-shrink: 0;
+}
+
+.mission-alert-close:hover {
+    background: #172b40;
+
+    color: white;
+}
+
+
+/* =========================================
+   ALERT ANIMATION
+========================================= */
+
+@keyframes missionAlertSlide {
+
+    from {
+        opacity: 0;
+
+        transform: translateY(-12px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .mission-alert-banner {
+        padding: 15px;
+
+        gap: 12px;
+    }
+
+    .mission-alert-icon {
+        font-size: 24px;
+    }
+
+    .mission-alert-title {
+        font-size: 14px;
+    }
+
+    .mission-alert-message {
+        font-size: 13px;
+    }
+
+}
+
+/* =========================================
+   ASTRO SENSE — MISSION CONTROL UI
+========================================= */
+
+:root {
+    --space-black: #040a12;
+    --space-blue: #07111f;
+    --panel: #0a1727;
+    --panel-light: #0d1d30;
+
+    --border: #1b344d;
+    --border-bright: #28516f;
+
+    --text-main: #f3f7fb;
+    --text-muted: #8298ad;
+    --text-dim: #536b80;
+
+    --cyan: #4ddcff;
+    --blue: #5ca9ff;
+
+    --green: #4dff9b;
+    --yellow: #ffd84d;
+    --red: #ff6675;
+}
+
+
+/* =========================================
+   GLOBAL
+========================================= */
+
+body {
+    background:
+        radial-gradient(
+            circle at 50% -20%,
+            #102b45 0%,
+            #07111f 45%,
+            #040a12 100%
+        );
+
+    color: var(--text-main);
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+    min-height: 90px;
+
+    padding: 20px 42px;
+
+    background: rgba(4, 10, 18, 0.92);
+
+    border-bottom:
+        1px solid var(--border);
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    position: relative;
+}
+
+
+/* Small blue line */
+
+.header::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: -1px;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #1e86b8,
+            transparent
+        );
+
+    opacity: 0.6;
+}
+
+
+/* =========================================
+   BRAND
+========================================= */
+
+.brand-area {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+
+.brand-mark {
+    width: 42px;
+    height: 42px;
+
+    border: 1px solid #2c6385;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+
+    color: var(--cyan);
+
+    box-shadow:
+        0 0 15px rgba(77, 220, 255, 0.15);
+}
+
+
+.brand-orbit {
+    font-size: 18px;
+
+    text-shadow:
+        0 0 10px var(--cyan);
+}
+
+
+.brand-line {
+    position: absolute;
+
+    width: 54px;
+    height: 12px;
+
+    border-top: 1px solid #367795;
+
+    border-radius: 50%;
+
+    transform: rotate(-25deg);
+}
+
+
+.logo {
+    font-size: 25px;
+
+    font-weight: 700;
+
+    letter-spacing: 3px;
+
+    line-height: 1;
+}
+
+
+.logo span {
+    color: var(--cyan);
+
+    text-shadow:
+        0 0 12px rgba(77, 220, 255, 0.3);
+}
+
+
+.subtitle {
+    color: var(--text-muted);
+
+    margin-top: 7px;
+
+    font-size: 10px;
+
+    letter-spacing: 1.8px;
+
+    font-weight: 500;
+}
+
+
+/* =========================================
+   MISSION INFO
+========================================= */
+
+.mission-info {
+    text-align: right;
+}
+
+
+.mission-label {
+    color: var(--text-dim);
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+}
+
+
+.mission-name {
+    color: var(--text-main);
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    margin-top: 2px;
+}
+
+
+.mission-status {
+    color: var(--green);
+
+    font-size: 9px;
+
+    letter-spacing: 1.2px;
+
+    margin-top: 5px;
+}
+
+
+.status-dot {
+    display: inline-block;
+
+    width: 6px;
+    height: 6px;
+
+    background: var(--green);
+
+    border-radius: 50%;
+
+    margin-right: 5px;
+
+    box-shadow:
+        0 0 8px var(--green);
+}
+
+
+/* =========================================
+   CONTAINER
+========================================= */
+
+.container {
+    max-width: 1500px;
+
+    margin: auto;
+
+    padding: 32px 42px 50px;
+}
+
+
+/* =========================================
+   SUMMARY CARDS
+========================================= */
+
+.summary {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 18px;
+
+    margin-bottom: 20px;
+}
+
+
+.telemetry-card {
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            #0d1d30,
+            #081522
+        );
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 12px;
+
+    padding: 20px;
+
+    transition:
+        border-color 0.25s,
+        transform 0.25s;
+}
+
+
+.telemetry-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    height: 2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #318bb4,
+            transparent
+        );
+}
+
+
+.telemetry-card:hover {
+    transform: translateY(-2px);
+
+    border-color:
+        var(--border-bright);
+}
+
+
+.card-top {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+
+.card-title {
+    color: var(--text-muted);
+
+    font-size: 11px;
+
+    letter-spacing: 1.5px;
+
+    font-weight: 600;
+}
+
+
+.card-icon {
+    color: var(--cyan);
+
+    font-size: 17px;
+
+    opacity: 0.8;
+}
+
+
+.alert-icon {
+    color: var(--yellow);
+}
+
+
+.card-value {
+    font-size: 30px;
+
+    font-weight: 600;
+
+    margin-top: 12px;
+
+    letter-spacing: 1px;
+}
+
+
+.card-meta {
+    color: var(--text-dim);
+
+    font-size: 9px;
+
+    letter-spacing: 1.3px;
+
+    margin-top: 5px;
+}
+
+
+.system-online {
+    color: var(--green);
+
+    font-size: 24px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   TELEMETRY STRIP
+========================================= */
+
+.telemetry-strip {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    background: #071321;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 9px;
+
+    margin-bottom: 28px;
+
+    overflow: hidden;
+}
+
+
+.telemetry-strip > div {
+    padding: 13px 17px;
+
+    border-right:
+        1px solid #152d43;
+}
+
+
+.telemetry-strip > div:last-child {
+    border-right: none;
+}
+
+
+.telemetry-label {
+    display: block;
+
+    color: var(--text-dim);
+
+    font-size: 8px;
+
+    letter-spacing: 1.5px;
+
+    margin-bottom: 5px;
+}
+
+
+.telemetry-strip strong {
+    font-size: 11px;
+
+    letter-spacing: 1px;
+
+    font-weight: 600;
+}
+
+
+.uplink-status {
+    color: var(--green);
+}
+
+
+/* =========================================
+   ASTRONAUT PANEL
+========================================= */
+
+.astronaut {
+    background:
+        linear-gradient(
+            145deg,
+            #0d1d30,
+            #091725
+        );
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 14px;
+
+    padding: 25px;
+
+    margin-bottom: 28px;
+
+    position: relative;
+}
+
+
+.astronaut-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 22px;
+}
+
+
+.astronaut-name {
+    font-size: 21px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+}
+
+
+.crew-id {
+    color: var(--text-dim);
+
+    font-size: 9px;
+
+    letter-spacing: 1.4px;
+
+    margin-top: 5px;
+}
+
+
+.status {
+    padding: 8px 14px;
+
+    border-radius: 6px;
+
+    background: #0c2b20;
+
+    color: var(--green);
+
+    border:
+        1px solid #1b6245;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    letter-spacing: 1px;
+}
+
+
+.status-light {
+    display: inline-block;
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: var(--green);
+
+    margin-right: 6px;
+
+    box-shadow:
+        0 0 8px var(--green);
+}
+
+
+/* =========================================
+   SECTION LABEL
+========================================= */
+
+.section-label {
+    color: var(--text-dim);
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 12px;
+
+    padding-bottom: 8px;
+
+    border-bottom:
+        1px solid #172d43;
+}
+
+
+/* =========================================
+   VITALS
+========================================= */
+
+.vitals {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 12px;
+}
+
+
+.vital {
+    background: #071321;
+
+    padding: 18px;
+
+    border-radius: 9px;
+
+    border:
+        1px solid #172e44;
+
+    position: relative;
+}
+
+
+.vital::after {
+    content: "";
+
+    position: absolute;
+
+    bottom: 0;
+    left: 15px;
+    right: 15px;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #244b67,
+            transparent
+        );
+}
+
+
+.vital-icon {
+    font-size: 19px;
+
+    opacity: 0.85;
+}
+
+
+.vital-value {
+    font-size: 26px;
+
+    font-weight: 600;
+
+    margin-top: 8px;
+}
+
+
+.vital-label {
+    color: var(--text-muted);
+
+    font-size: 9px;
+
+    letter-spacing: 1px;
+
+    margin-top: 4px;
+}
+
+
+/* =========================================
+   CHARTS
+========================================= */
+
+.chart-card {
+    background:
+        linear-gradient(
+            145deg,
+            #0c1b2c,
+            #081522
+        );
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 13px;
+
+    padding: 20px;
+
+    height: 300px;
+
+    position: relative;
+}
+
+
+.chart-header {
+    color: var(--text-main);
+
+    font-size: 13px;
+
+    letter-spacing: 0.5px;
+}
+
+
+.chart-header span {
+    color: var(--text-dim);
+
+    font-size: 9px;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================================
+   SIMULATION PANEL
+========================================= */
+
+.simulator .card {
+    background: #091827;
+
+    border:
+        1px solid var(--border);
+}
+
+
+.sim-button {
+    border-radius: 6px;
+
+    font-size: 10px;
+
+    letter-spacing: 0.7px;
+
+    padding: 11px 15px;
+
+    border: 1px solid transparent;
+}
+
+
+.normal-button {
+    border-color: #24583f;
+}
+
+
+.warning-button {
+    border-color: #6b5c1d;
+}
+
+
+.critical-button {
+    border-color: #71303a;
+}
+
+
+.notification-button {
+    border-color: #245574;
+}
+
+
+/* =========================================
+   ALERT CENTER
+========================================= */
+
+.alert {
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #241116,
+            #160d12
+        );
+
+    border:
+        1px solid #71303a;
+
+    padding: 18px;
+
+    color: #ff7784;
+
+    font-size: 12px;
+
+    letter-spacing: 0.3px;
+}
+
+
+/* =========================================
+   MISSION ALERT HISTORY
+========================================= */
+
+.history-card,
+.active-alerts-card {
+    background:
+        linear-gradient(
+            145deg,
+            #0c1b2c,
+            #081522
+        );
+
+    border-color: var(--border);
+}
+
+
+.history-title,
+.active-alerts-title {
+    font-size: 14px;
+
+    letter-spacing: 1px;
+}
+
+
+.history-subtitle,
+.active-alerts-subtitle {
+    font-size: 10px;
+
+    letter-spacing: 0.5px;
+}
+
+
+/* =========================================
+   LAST UPDATE
+========================================= */
+
+#lastUpdate {
+    color: var(--text-dim) !important;
+
+    font-size: 9px;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+
+    padding-left: 3px;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 900px) {
+
+    .header {
+        padding: 18px 20px;
+    }
+
+    .container {
+        padding: 22px 20px;
+    }
+
+    .telemetry-strip {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .telemetry-strip > div:nth-child(2) {
+        border-right: none;
+    }
+
+    .vitals {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .header {
+        align-items: flex-start;
+    }
+
+    .mission-info {
+        display: none;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .subtitle {
+        font-size: 8px;
+    }
+
+    .summary {
+        grid-template-columns: 1fr;
+    }
+
+    .telemetry-strip {
+        grid-template-columns: 1fr;
+    }
+
+    .telemetry-strip > div {
+        border-right: none;
+
+        border-bottom:
+            1px solid #152d43;
+    }
+
+    .telemetry-strip > div:last-child {
+        border-bottom: none;
+    }
+
+    .vitals {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .chart-card {
+    height: 260px;
+}
+
+}
